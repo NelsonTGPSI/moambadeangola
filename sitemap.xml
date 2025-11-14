@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
+  <!-- sitemap generated for moambadeangola.pt -->
+  <url>
+    <loc>https://moambadeangola.pt/</loc>
+    <lastmod>2025-11-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://moambadeangola.pt/about.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://moambadeangola.pt/menu.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://moambadeangola.pt/gallery.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://moambadeangola.pt/contact.html</loc>
+    <lastmod>2025-11-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Example image entry to help rich results (add more if useful) -->
+  <url>
+    <loc>https://moambadeangola.pt/menu.html</loc>
+    <image:image>
+      <image:loc>https://moambadeangola.pt/assets/img/moamba-de-galinha.jpg</image:loc>
+      <image:caption>Moamba de Galinha — Moamba d'Angola</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://moambadeangola.pt/</loc>
+    <image:image>
+      <image:loc>https://moambadeangola.pt/assets/img/logo-dourado.png</image:loc>
+      <image:caption>Moamba d'Angola — Logotipo</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
