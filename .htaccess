@@ -1,0 +1,67 @@
+# Moamba d'Angola - URL Rewriting e Segurança
+
+# Ativar o módulo de reescrita
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Remover .html das URLs
+  # Reescrever requisições para arquivos .html
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ $1.html [L]
+
+  # Redirecionar URLs com .html para URLs sem extensão (301 redirect)
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
+  RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
+
+  # Forçar HTTPS (comentar se não tiver SSL configurado)
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # Remover www (opcional - comentar se quiser manter www)
+  # RewriteCond %{HTTP_HOST} ^www\. [NC]
+  # RewriteRule ^(.*)$ https://moambadeangola.pt/$1 [R=301,L]
+</IfModule>
+
+# Melhorar cache do browser
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+  ExpiresByType text/html "access plus 1 day"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# Comprimir ficheiros para melhor performance
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json
+</IfModule>
+
+# Bloquear acesso a ficheiros sensíveis
+<FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Remover cabeçalhos do servidor (segurança)
+<IfModule mod_headers.c>
+  Header always unset X-Powered-By
+  Header unset X-Powered-By
+  Header always unset Server
+  Header unset Server
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Permitir ficheiros estáticos diretos (CSS, JS, imagens)
+<FilesMatch "\.(css|js|jpg|jpeg|png|gif|ico|svg|woff|woff2|ttf|eot)$">
+  Header set Cache-Control "max-age=2592000, public"
+</FilesMatch>

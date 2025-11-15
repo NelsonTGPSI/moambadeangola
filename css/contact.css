@@ -1,0 +1,223 @@
+/* Contact Cards */
+.contact-cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:24px;
+  margin:40px 0;
+}
+
+.contact-card{
+  background:#fff;
+  padding:32px;
+  border-radius:12px;
+  text-align:center;
+  border:1px solid rgba(194,177,121,0.1);
+  box-shadow:0 8px 24px rgba(116,105,76,0.06);
+  transition:transform .25s ease;
+}
+
+.contact-card:hover{
+  transform:translateY(-4px);
+}
+
+.card-icon{
+  width:64px;
+  height:64px;
+  background:var(--brown);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 20px;
+}
+
+.card-icon i{
+  color:#fff;
+  font-size:24px;
+}
+
+.contact-card h3{
+  font-family:"Playfair Display",serif;
+  color:var(--brown);
+  margin:0 0 16px;
+}
+
+.contact-card p{
+  color:var(--muted);
+  line-height:1.6;
+  margin:0 0 20px;
+}
+
+.contact-card .phone{
+  font-size:20px;
+  color:var(--brown);
+  font-weight:600;
+  margin-bottom:24px;
+}
+
+.contact-card .btn{
+  width:100%;
+  margin-bottom:8px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.quick-hours{
+  list-style:none;
+  padding:0;
+  margin:0 0 20px;
+  text-align:left;
+}
+
+.quick-hours li{
+  color:var(--muted);
+  padding:8px 0;
+  border-bottom:1px solid rgba(194,177,121,0.1);
+}
+
+.quick-hours li:last-child{
+  border-bottom:none;
+}
+
+/* Map Section */
+.map-section{
+  margin:60px 0;
+}
+
+.map-container{
+  margin-top:30px;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid rgba(194,177,121,0.1);
+  box-shadow:0 8px 24px rgba(116,105,76,0.06);
+}
+
+/* Social Media Grid */
+.social-section{
+  margin:60px 0;
+}
+
+.social-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:24px;
+  margin-top:30px;
+}
+
+.social-card{
+  background:#fff;
+  padding:32px;
+  border-radius:12px;
+  text-align:center;
+  text-decoration:none;
+  border:1px solid rgba(194,177,121,0.1);
+  box-shadow:0 8px 24px rgba(116,105,76,0.06);
+  transition:transform .25s ease;
+}
+
+.social-card:hover{
+  transform:translateY(-4px);
+}
+
+.social-card i{
+  font-size:32px;
+  color:var(--brown);
+  margin-bottom:16px;
+}
+
+.social-card h3{
+  font-family:"Playfair Display",serif;
+  color:var(--brown);
+  margin:0 0 8px;
+}
+
+.social-card p{
+  color:var(--muted);
+  margin:0;
+}
+
+/* Reservations CTA */
+.reservations-cta{
+  background:linear-gradient(180deg, rgba(194,177,121,0.08), rgba(194,177,121,0.02));
+  padding:60px 20px;
+  text-align:center;
+  border-radius:12px;
+  margin:60px 0 20px;
+}
+
+.cta-buttons{
+  display:flex;
+  gap:16px;
+  justify-content:center;
+  margin-top:32px;
+}
+
+.cta-buttons .btn{
+  text-decoration: none;
+}
+
+/* Responsive Adjustments */
+
+/* Desktop grande */
+@media (min-width: 1400px) {
+  .contact-cards,
+  .social-grid {
+    max-width: 1320px;
+    margin: 40px auto;
+  }
+}
+
+/* Tablets e desktops pequenos */
+@media (min-width: 681px) and (max-width: 1024px) {
+  .contact-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .map-container {
+    height: 400px;
+  }
+}
+
+/* Mobile */
+@media (max-width:680px){
+  .cta-buttons{
+    flex-direction:column;
+    gap:12px;
+  }
+  
+  .cta-buttons .btn{
+    width:100%;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .contact-card{
+    padding:24px;
+  }
+  
+  .contact-card .btn {
+    min-height: 44px;
+  }
+  
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .map-container {
+    height: 300px;
+  }
+  
+  .quick-hours li {
+    padding: 12px 0;
+  }
+  
+  .contact h2 {
+    font-size: 28px;
+  }
+  
+  .social-card {
+    padding: 24px;
+  }
+}
