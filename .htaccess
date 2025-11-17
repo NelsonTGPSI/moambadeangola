@@ -1,30 +1,30 @@
 # Moamba d'Angola - URL Rewriting e Segurança
 
-# Ativar o módulo de reescrita
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
 
-  # Remover .html das URLs
-  # Reescrever requisições para arquivos .html
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule ^(.*)$ $1.html [L]
-
   # Redirecionar URLs com .html para URLs sem extensão (301 redirect)
-  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html\ HTTP
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /([^.]+)\.html(\s|\?)
   RewriteRule ^([^.]+)\.html$ /$1 [R=301,L]
 
-  # Forçar HTTPS (comentar se não tiver SSL configurado)
+  # Reescrever URLs limpas para servir arquivos .html (apenas se não for arquivo ou diretório)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteCond %{REQUEST_URI} !\.html$
+  RewriteRule ^([^.\/]+)$ $1.html [L]
+
+  # Forçar HTTPS (comente se não usar SSL)
   # RewriteCond %{HTTPS} off
   # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Remover www (opcional - comentar se quiser manter www)
+  # Remover www (opcional)
   # RewriteCond %{HTTP_HOST} ^www\. [NC]
   # RewriteRule ^(.*)$ https://moambadeangola.pt/$1 [R=301,L]
 </IfModule>
 
-# Melhorar cache do browser
+# Cache do browser
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresDefault "access plus 1 week"
